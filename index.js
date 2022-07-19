@@ -34,7 +34,7 @@ const postprocessorArgs = GetEnvironmentVar('POSTPROCESSOR_ARGS', "")
 const postprocessorArgsCmd = postprocessorArgs == ""? "": `--postprocessor-args="${postprocessorArgs}"`
 
 // maxBuffer in specified in bytes
-const execOptions = {maxBuffer: 5 * 1024}
+const execOptions = {maxBuffer: Infinity}
 
 console.log('installing dependecies');
 exec('sudo curl -k -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/youtube-dl && sudo chmod a+rx /usr/local/bin/youtube-dl && sudo npm i puppeteer --unsafe-perm=true --allow-root', (error, stdout, stderr) => {
