@@ -84,7 +84,7 @@ exec('sudo curl -k -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/
                     console.log(`stderr: ${stderr}`)
                     return
                 }
-                console.log(`stdout: ${stdout}`)
+                console.log("Download of youtube audio completed. stdout ommited:")
                 fs.writeFileSync(pathToEpisodeJSON, JSON.stringify(epConfJSON));
 
                 const episode = JSON.parse(fs.readFileSync(pathToEpisodeJSON, 'utf-8'));
