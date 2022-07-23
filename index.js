@@ -44,7 +44,7 @@ exec('sudo curl -k -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/
     if (stderr) {
         console.log(`stderr: ${stderr}`);
     }
-    console.log(`stdout: ${stdout}`);
+    console.log("youtube-dl downloaded and installed, stdout ommited");
 
     const youtubedl = require('youtube-dl');
     const puppeteer = require('puppeteer');
