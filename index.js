@@ -34,7 +34,7 @@ const postprocessorArgs = GetEnvironmentVar('POSTPROCESSOR_ARGS', "")
 const postprocessorArgsCmd = postprocessorArgs == ""? "": `--postprocessor-args="${postprocessorArgs}"`
 
 // maxBuffer in specified in bytes
-const execOptions = {maxBuffer: 5 * 1024}
+const execOptions = {maxBuffer: Infinity}
 
 console.log('installing dependecies');
 exec('sudo curl -k -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/youtube-dl && sudo chmod a+rx /usr/local/bin/youtube-dl && sudo npm i puppeteer --unsafe-perm=true --allow-root', (error, stdout, stderr) => {
@@ -44,7 +44,7 @@ exec('sudo curl -k -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/
     if (stderr) {
         console.log(`stderr: ${stderr}`);
     }
-    console.log(`stdout: ${stdout}`);
+    console.log("youtube-dl downloaded and installed, stdout ommited");
 
     const youtubedl = require('youtube-dl');
     const puppeteer = require('puppeteer');
@@ -84,7 +84,7 @@ exec('sudo curl -k -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/
                     console.log(`stderr: ${stderr}`)
                     return
                 }
-                console.log(`stdout: ${stdout}`)
+                console.log("Download of youtube audio completed. stdout ommited:")
                 fs.writeFileSync(pathToEpisodeJSON, JSON.stringify(epConfJSON));
 
                 const episode = JSON.parse(fs.readFileSync(pathToEpisodeJSON, 'utf-8'));
